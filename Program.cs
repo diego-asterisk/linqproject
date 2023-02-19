@@ -18,7 +18,9 @@ namespace BooksLinq
 
         Console.WriteLine($"Todos los libros tienen Status? {queries.TodosLibrosTienenStatus()}");
         Console.WriteLine($"Algún libro se publicó en 2005? {queries.AlgunLibroPublicado2005()}");
-        
+
+        ImprimirValores(queries.LibrosDePython());
+
         void ImprimirValores(IEnumerable<Book> listadelibros)
         {
             Console.WriteLine("{0,60} {1, -15} {2, -15}\n", "Titulo", "N. Paginas", "Fecha publicacion");

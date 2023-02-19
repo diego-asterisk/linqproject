@@ -17,3 +17,8 @@ Operador Any
 librosCollection.Any(x => x.PublishedDate.Year == 2005);
 ```
 
+Operador Contains
+```cs
+librosCollection.Where(x => x.Categories.Contains("Python"));
+```
+

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -36,6 +37,10 @@ namespace BooksLinq
             return librosCollection.Where(x => x.PageCount > 250 && x.Title.Contains("in Action"));
             // query expresion 
             // return from l in librosCollection where l.PageCount > 250 && l.Title.Contains("in Action") select l;
+        }
+        public IEnumerable<Book> LibrosDePython()
+        {
+            return librosCollection.Where(x => x.Categories.Contains("Python"));
         }
 
         public bool TodosLibrosTienenStatus()
