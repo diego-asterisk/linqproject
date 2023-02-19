@@ -40,7 +40,10 @@ namespace BooksLinq
         }
         public IEnumerable<Book> LibrosDePython()
         {
-            return librosCollection.Where(x => x.Categories.Contains("Python"));
+            // extension method
+            // return librosCollection.Where(x => x.Categories.Contains("Python"));
+            // query expresion 
+            return from l in librosCollection where l.Categories.Contains("Python") select l;
         }
 
         public bool TodosLibrosTienenStatus()
