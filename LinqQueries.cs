@@ -33,9 +33,18 @@ namespace BooksLinq
         public IEnumerable<Book> LibrosMas200()
         {
             // extension method
-            return librosCollection.Where(x=>x.PageCount > 250 && x.Title.Contains("in Action"));
+            return librosCollection.Where(x => x.PageCount > 250 && x.Title.Contains("in Action"));
             // query expresion 
             // return from l in librosCollection where l.PageCount > 250 && l.Title.Contains("in Action") select l;
+        }
+
+        public bool TodosLibrosTienenStatus()
+        {
+            return librosCollection.All(x => x.Status != string.Empty);
+        }
+        public bool AlgunLibroPublicado2005()
+        {
+            return librosCollection.Any(x => x.PublishedDate.Year == 2005);
         }
     }
 }

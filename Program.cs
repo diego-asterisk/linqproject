@@ -15,6 +15,9 @@ namespace BooksLinq
         ImprimirValores(queries.LibrosDespues2000());
         
         ImprimirValores(queries.LibrosMas200());
+
+        Console.WriteLine($"Todos los libros tienen Status? {queries.TodosLibrosTienenStatus()}");
+        Console.WriteLine($"Algún libro se publicó en 2005? {queries.AlgunLibroPublicado2005()}");
         
         void ImprimirValores(IEnumerable<Book> listadelibros)
         {
