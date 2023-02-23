@@ -65,6 +65,15 @@ namespace BooksLinq
        public IEnumerable<Book> LibrosOrdenadosPaginasDesc(IEnumerable<Book> libros){
             return libros.OrderByDescending(p => p.PageCount);
         }
+        // SKIP Y TAKE: UTILIZANDO EL OPERADOR SKIP SELECCIONA EL TERCER Y CUARTO LIBRO DE LOS QUE TENGAN MÁS DE 400 PÁGINAS 
+        // tambien existen skipwhile y takewhile que toman o ignoran elementos mientras se cumple la condicion
+        public IEnumerable<Book> Libros3eroY4toCon400Paginas()
+        {
+            return librosCollection
+                .Where( p => p.PageCount > 400 )
+                .Take(4)// los primeros 4
+                .Skip(2); //omite el primero y el segundo
+        }
 
         public bool TodosLibrosTienenStatus()
         {
