@@ -27,6 +27,8 @@ namespace BooksLinq
 
         ImprimirValores(queries.Libros3eroY4toCon400Paginas());
 
+        ImprimirValores(queries.LibrosTop3());
+
         void ImprimirValores(IEnumerable<Book> listadelibros)
         {
             Console.WriteLine("{0,60} {1, -15} {2, -15}\n", "Titulo", "N. Paginas", "Fecha publicacion");

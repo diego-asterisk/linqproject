@@ -74,6 +74,14 @@ namespace BooksLinq
                 .Take(4)// los primeros 4
                 .Skip(2); //omite el primero y el segundo
         }
+        // usar SELECT para seleccionar los campos necesarios, eso crea un tipo dinamico: new { Title = p.Title, Count = p.PageCount }
+        // o crear un objeto de la clase Book o de una clase nueva o subtipo
+        public IEnumerable<Book> LibrosTop3()
+        {
+            return librosCollection
+                .Take(3)
+                .Select( p => new Book(){ Title = p.Title, PageCount = p.PageCount} );
+        }
 
         public bool TodosLibrosTienenStatus()
         {
