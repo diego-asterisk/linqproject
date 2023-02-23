@@ -82,6 +82,12 @@ namespace BooksLinq
                 .Take(3)
                 .Select( p => new Book(){ Title = p.Title, PageCount = p.PageCount} );
         }
+        public IEnumerable<Booky> LibrosTop5()
+        {
+            return librosCollection
+                .Take(3)
+                .Select( p => new Booky(){ Title = p.Title, PageCount = p.PageCount} );
+        }
 
         public bool TodosLibrosTienenStatus()
         {

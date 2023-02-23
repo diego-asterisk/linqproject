@@ -10,4 +10,10 @@ namespace BooksLinq
         public string[] Authors {get;set;}
         public string[] Categories {get;set;}
     }
+    public class Booky
+    {
+        public string Title {get;set;}
+        public int PageCount {get;set;}
+    }
+
 }

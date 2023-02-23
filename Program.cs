@@ -28,6 +28,7 @@ namespace BooksLinq
         ImprimirValores(queries.Libros3eroY4toCon400Paginas());
 
         ImprimirValores(queries.LibrosTop3());
+        ImprimirValorcitos(queries.LibrosTop5());
 
         void ImprimirValores(IEnumerable<Book> listadelibros)
         {
@@ -35,6 +36,14 @@ namespace BooksLinq
             foreach(var item in listadelibros)
             {
                 Console.WriteLine("{0,60} {1, -15} {2, -15}", item.Title, item.PageCount, item.PublishedDate.ToShortDateString());
+            }
+        }
+        void ImprimirValorcitos(IEnumerable<Booky> listadelibros)
+        {
+            Console.WriteLine("{0,60} {1, -15} \n", "Titulo", "N. Paginas");
+            foreach(var item in listadelibros)
+            {
+                Console.WriteLine("{0,60} {1, -15} ", item.Title, item.PageCount);
             }
         }
     }
