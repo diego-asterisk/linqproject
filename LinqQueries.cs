@@ -38,12 +38,32 @@ namespace BooksLinq
             // query expresion 
             // return from l in librosCollection where l.PageCount > 250 && l.Title.Contains("in Action") select l;
         }
+        public IEnumerable<Book> LibrosMasDe(int paginas)
+        {
+            // extension method
+            // return librosCollection.Where(x => x.PageCount > 450);
+            // query expresion 
+            return from l in librosCollection where l.PageCount > paginas select l;
+        }
         public IEnumerable<Book> LibrosDePython()
         {
             // extension method
             // return librosCollection.Where(x => x.Categories.Contains("Python"));
             // query expresion 
             return from l in librosCollection where l.Categories.Contains("Python") select l;
+        }
+       public IEnumerable<Book> LibrosDe(string nombre)
+        {
+            // extension method
+            // return librosCollection.Where(x => x.Categories.Contains(nombre));
+            // query expresion 
+            return from l in librosCollection where l.Categories.Contains(nombre) select l;
+        }
+        public IEnumerable<Book> LibrosOrdenadosNombreAsc(IEnumerable<Book> libros){
+            return libros.OrderBy(p => p.Title);
+        }
+       public IEnumerable<Book> LibrosOrdenadosPaginasDesc(IEnumerable<Book> libros){
+            return libros.OrderByDescending(p => p.PageCount);
         }
 
         public bool TodosLibrosTienenStatus()
