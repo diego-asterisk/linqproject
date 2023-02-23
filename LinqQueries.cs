@@ -88,7 +88,21 @@ namespace BooksLinq
                 .Take(3)
                 .Select( p => new Booky(){ Title = p.Title, PageCount = p.PageCount} );
         }
-
+        // Es una mala practica hacer dos operaciones en vez de una, aunque no sea un error
+        // aca estamos haciendo el where y el count, cuando en realidad el count puede recibir la condicion
+        public long LibrosMas200Menos500paginas()
+        {
+            return (
+                from l in librosCollection 
+                where l.PageCount >= 200 && l.PageCount <= 500 
+                select l)
+                .LongCount();
+        }
+        // mejor, mas eficiente:
+        public long LibrosMas200Menos500()
+        {
+            return librosCollection.LongCount( l => l.PageCount >= 200 && l.PageCount <= 500 );
+        }
         public bool TodosLibrosTienenStatus()
         {
             return librosCollection.All(x => x.Status != string.Empty);

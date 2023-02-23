@@ -30,6 +30,8 @@ namespace BooksLinq
         ImprimirValores(queries.LibrosTop3());
         ImprimirValorcitos(queries.LibrosTop5());
 
+        Console.WriteLine("Cantidad de libros con mas de 200 hojas y menos de 500: {0}", queries.LibrosMas200Menos500());
+
         void ImprimirValores(IEnumerable<Book> listadelibros)
         {
             Console.WriteLine("{0,60} {1, -15} {2, -15}\n", "Titulo", "N. Paginas", "Fecha publicacion");
