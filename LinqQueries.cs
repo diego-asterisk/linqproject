@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -102,6 +103,33 @@ namespace BooksLinq
         public long LibrosMas200Menos500()
         {
             return librosCollection.LongCount( l => l.PageCount >= 200 && l.PageCount <= 500 );
+        }
+        // otra vez ineficiente
+        public int LibrosMas200Menos500paginas2()
+        {
+            return librosCollection.Where( p => p.PageCount >= 200 && p.PageCount <= 500).Count();
+        }
+        // fecha de publicacion menor
+        public DateTime FechaDePublicacionMenor()
+        {
+            return librosCollection.Min( f => f.PublishedDate );
+        }
+        public int NumeroDePaginasMayor()
+        {
+            return librosCollection.Max( p => p.PageCount );
+        }
+        public Book LibroConNumeroDePaginasMenor()
+        {
+            // si hay varios libros que cumplen, retorna uno cualquiera de ellos
+            var book = librosCollection.Where( l => l.PageCount > 0).MinBy( p => p.PageCount );
+            if (book == null) return new Book(); 
+            return book;
+        }
+        public Book LibroConFechaMayor()
+        {
+            var book = librosCollection.MaxBy( p => p.PublishedDate );
+            if (book == null) return new Book(); 
+            return book;
         }
         public bool TodosLibrosTienenStatus()
         {

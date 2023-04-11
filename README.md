@@ -22,3 +22,18 @@ Operador Contains
 librosCollection.Where(x => x.Categories.Contains("Python"));
 ```
 
+Operador LongCount
+```cs
+librosCollection.LongCount( l => l.PageCount >= 200 && l.PageCount <= 500 );
+```
+
+Operador Max
+```cs
+librosCollection.Max(x => x.PublishedDate);
+```
+
+Operador MinBy
+```cs
+book = librosCollection.MinBy(x => x.PageCount);
+```
+
