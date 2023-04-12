@@ -125,11 +125,34 @@ namespace BooksLinq
             if (book == null) return new Book(); 
             return book;
         }
+        public long SumaPaginasLibrosConCantidadMenor(int cantidad = 500){
+            return librosCollection.Where( p=> p.PageCount > 0 && p.PageCount < cantidad).Sum( p => p.PageCount);
+        }
         public Book LibroConFechaMayor()
         {
             var book = librosCollection.MaxBy( p => p.PublishedDate );
             if (book == null) return new Book(); 
             return book;
+        }
+        
+        public string TitulosPublicadosLuego(int year = 2000){
+            // El agregado pide un delegado con argumentos: valor semilla,  acumulador y valor actual
+            return librosCollection
+                .Where( x => x.PublishedDate.Year >= year)
+                .Aggregate( "", (Acumulador, next) => {
+                    if (Acumulador == string.Empty){
+                        Acumulador += next.Title;
+                    }else{
+                        Acumulador += ", " + next.Title;
+                    }
+                    return Acumulador;
+                });
+        }
+        public double PromedioCaracteresTitulos(){
+            return librosCollection.Average( p => p.Title.Length );
+        }
+        public double PromedioPaginasLibros(){
+            return librosCollection.Where( p => p.PageCount > 0).Average( p => p.PageCount );
         }
         public bool TodosLibrosTienenStatus()
         {

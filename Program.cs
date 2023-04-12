@@ -67,6 +67,16 @@ namespace BooksLinq
         // libro con la fecha mas reciente
         Console.WriteLine($"El libro mas reciente se llama {queries.LibroConFechaMayor().Title}.");
 
+        // cantiad de paginas entre los libros con menos de 500 hojas
+        Console.WriteLine($"Suma de las páginas = {queries.SumaPaginasLibrosConCantidadMenor()}");
+
+        // Los libros publicados despues de 2015
+        Console.WriteLine($"Titulos publicados: {queries.TitulosPublicadosLuego(2015)}");
+
+        // el promedio de la cantidad de caracteres en titulos
+        Console.WriteLine($"Promedio de caracteres de los titulos: {queries.PromedioCaracteresTitulos()}");
+        // el promedio de la cantidad de paginas de los libros (formateado a dos decimales)
+        Console.WriteLine($"Promedio de paginas de los libros: {queries.PromedioPaginasLibros():N2}");
 
         void ImprimirValores(IEnumerable<Book> listadelibros)
         {
