@@ -37,3 +37,26 @@ Operador MinBy
 book = librosCollection.MinBy(x => x.PageCount);
 ```
 
+Operador Average
+```cs
+book = librosCollection.Average(x => x.PageCount);
+```
+Operador Agregate
+```cs
+book = librosCollection.Agregate(seed, (accumulator, next) => { Acumular(accumulator, next); return accumulator; } );
+```
+
+### Operadores de agrupamiento
+
+Operador GroupBy
+```cs
+book = librosCollection.GroupBy( p => p.PublishedDate.Year );
+```
+Operador ToLookup
+```cs
+book = librosCollection.ToLookup(p => p.Title[0], b => b);
+```
+Operador Join
+```cs
+book = coleccionA.Join( coleccionB, p => p.Id, q => q.otroId, (p, q) => p);
+```

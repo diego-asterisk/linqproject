@@ -154,6 +154,30 @@ namespace BooksLinq
         public double PromedioPaginasLibros(){
             return librosCollection.Where( p => p.PageCount > 0).Average( p => p.PageCount );
         }
+        // devolvera una lista agrupada por un entero y un libro
+        public  IEnumerable<IGrouping<int,Book>> PublicacionesAgrupadas(){
+            return librosCollection.Where(p => p.PublishedDate.Year >= 2010).OrderBy(p => p.PublishedDate.Year).GroupBy( p => p.PublishedDate.Year );
+        }
+        public ILookup<char,string> DiccionarioPorLetraInicialTitulo(){
+            return librosCollection.ToLookup(p => p.Title[0], p => p.Title);
+        }
+        public ILookup<char,Book> DiccionarioPorLetraInicialLibro(){
+            return librosCollection.ToLookup(p => p.Title[0], b => b);
+        }
+        public IEnumerable<Book> JoinLibros(){
+            var coleccion500 = librosCollection.Where(x => x.PageCount > 500);
+            var coleccion2005 = librosCollection.Where(x => x.PublishedDate.Year > 2005);
+            return coleccion500.Join( coleccion2005, p => p.Title, q => q.Title, (p, q) => p);
+        }
+        public IEnumerable<Book> JoinLibrosQuery(){
+            var result = from coleccion500 in librosCollection 
+                 join coleccion2005 in librosCollection
+                 on coleccion500.Title equals coleccion2005.Title
+                 where coleccion500.PageCount >= 500 && coleccion2005.PublishedDate.Year > 2005
+                 select coleccion500;
+            return result;
+        }
+
         public bool TodosLibrosTienenStatus()
         {
             return librosCollection.All(x => x.Status != string.Empty);
